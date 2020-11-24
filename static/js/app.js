@@ -12,45 +12,50 @@ data.forEach(function(ufoSighting) {
 });
 
 //use D3 to append one table row "tr" for each ufo sighting
-data.forEach(function(ufoSighting) {
-    console.log(ufoSighting);
-    var row = tbody.append("tr");
+// data.forEach(function(ufoSighting) {
+//     console.log(ufoSighting);
+//     var row = tbody.append("tr");
 
-    Object.entries(ufoSighting).forEach(function([key, value]) {
-        console.log(key, value);
-    });
-});
+//     Object.entries(ufoSighting).forEach(function([key, value]) {
+//         console.log(key, value);
+//     });
+// });
 
-//use D3 to append 1 cell per ufo sighting value
-data.forEach(function(ufoSighting) {
-    console.log(ufoSighting);
-    var row = tbody.append("tr");
+// //use D3 to append 1 cell per ufo sighting value
+// data.forEach(function(ufoSighting) {
+//     console.log(ufoSighting);
+//     var row = tbody.append("tr");
 
-    Object.entries(ufoSighting).forEach(function([key, value]) {
-        console.log(key, value);
-        var cell = row.append("td");
-    });
-});
+//     Object.entries(ufoSighting).forEach(function([key, value]) {
+//         console.log(key, value);
+//         var cell = row.append("td");
+//     });
+// });
 
 //use D3 to update each cell's text with ufo sighting values
-data.forEach(function(ufoSighting) {
-    console.log(ufoSighting);
-    var row = tbody.append("tr");
-    Object.entries(ufoSighting).forEach(function([key, value]) {
-        console.log(key, value);
-        var cell = row.append("td");
-        cell.text(value);
+function searchData (data) {
+    tbody.html("")
+    data.forEach(function(ufoSighting) {
+        console.log(ufoSighting);
+        var row = tbody.append("tr");
+        Object.entries(ufoSighting).forEach(function([key, value]) {
+            console.log(key, value);
+            var cell = row.append("td");
+            cell.text(value);
+        });
     });
-});
+}
+
+searchData(data)
 
 
 //var sightings = data;
 
 var button = d3.select("#filter-btn");
-var filters = d3.select("#filters");
+//var filters = d3.select("#filters");
 
 button.on("click", runEnter);
-filters.on("submit", runEnter);
+//filters.on("submit", runEnter);
 
 function runEnter() {
     d3.event.preventDefault();
@@ -65,7 +70,7 @@ function runEnter() {
 
     console.log(filteredData);
 
-
+searchData(filteredData)
 };
 
 
